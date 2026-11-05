@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IBMwenze</title>
+    <link rel="shortcut icon" type="image/x-icon" href="PHOTOS/BEBOL2S.png">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="wenze_feed.css">
+
+</head>
+
+<body>
+    <header class="header">
+        <div class="logo">
+            <img src="PHOTOS/BEBOL2S.png" alt="BEBOL Logo" class="logo">
+            <h1>IBMwenze🛍️</h1>
+        </div>
+                    <!-- 🔍 Recherche -->
+        <input type="text" id="searchInput" placeholder="Rechercher un produit...">
+    
+            <!-- Bouton "Publier" sous la barre de recherche -->
+        <button id="publishButton" class="publish-button">Publier</button>
+            <!-- Formulaire de publication caché par défaut -->
+            <section id="publishForm" class="publish-form" style="display: none;">
+                <h2>Publier un article</h2>
+                <form id="formPublish">
+                    <label for="productTitle">Titre</label>
+                    <input type="text" id="productTitle" name="productTitle" required>
+            
+                    <label for="productDescription">Description</label>
+                    <textarea id="productDescription" name="productDescription" rows="4" required></textarea>
+            
+                    <label for="productPrice">Prix (€)</label>
+                    <input type="number" id="productPrice" name="productPrice" required>
+            
+                    <label for="productImage">Image</label>
+                    <input type="file" id="productImage" name="productImage">
+            
+                    <button type="submit">Publier</button>
+                </form>
+            </section>
+           
+            <div class="header-actions">
+                <div class="cart">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span id="cartCount">0</span>
+                </div>
+            </div>
+       
+
+    </header>
+
+    <main>
+        
+        <div class="container">
+          
+            <aside class="sidebar">
+                <h3>Filtres</h3>
+        
+                <label>Catégorie</label>
+                <select id="categoryFilter">
+                    <option value="">Toutes</option>
+                    <option value="électronique">Électronique</option>
+                    <option value="vêtements">Vêtements</option>
+                    <option value="maison">Maison</option>
+                    <option value="sport">Sport</option>
+                    <option value="beauté">Beauté</option>
+                </select>
+        
+                <label>Prix</label>
+                <select id="priceFilter">
+                    <option value="">Tous</option>
+                    <option value="0-50">0-50€</option>
+                    <option value="50-100">50-100€</option>
+                    <option value="100-500">100-500€</option>
+                    <option value="500+">500€+</option>
+                </select>
+        
+                <label>Trier</label>
+                <select id="sortFilter">
+                    <option value="">Défaut</option>
+                    <option value="price-asc">Prix ↑</option>
+                    <option value="price-desc">Prix ↓</option>
+                    <option value="rating">Top notes</option>
+                </select>
+            </aside>
+        
+            <section id="productsFeed" class="products-grid"></section>
+        
+        </div>
+
+        <!-- 🛍️ Feed produits -->
+        <section id="productsFeed">
+            <h2>Produits</h2>
+        </section>
+        
+        <section id="cartSection">
+            <h2>🛒 Panier</h2>
+            <div id="cartItems"></div>
+            <h3 id="cartTotal">Total : 0€</h3>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>ibmprod45@gmail.com | IBMprod | +243853193403</p>
+        <p>copyright &copy; BEBOL2022 par IBMprod</p>
+    </footer>
+
+    <!-- JS -->
+    <script src="wenze_feed.js"></script>
+</body>
+</html>
