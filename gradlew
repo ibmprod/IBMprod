@@ -2,9 +2,7 @@
 ##############################################################################
 # Gradle start up script for UN*X
 ##############################################################################
-
-set -e
-
+# attempts to set APP_HOME to the directory this script lives in
 PRG="$0"
 while [ -h "$PRG" ] ; do
   ls=`ls -ld "$PRG"`
@@ -15,6 +13,6 @@ while [ -h "$PRG" ] ; do
     PRG=`dirname "$PRG"`"/$link"
   fi
 done
-
 PRGDIR=`dirname "$PRG"`
+
 exec "$PRGDIR/gradle/wrapper/gradle-wrapper.jar" "$@"
