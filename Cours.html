@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="fr-FR">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=devise-width, initial-scale=1.0">
+        <title>IBMprod | BUKU</title>
+        
+        <link rel="shortcut icon" type="image/x-icon" href="PHOTOS/IBMprodV.png">
+
+          <script src="https://cdn.tailwindcss.com"></script>
+    </head>
+
+    <body class="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white p-6">
+         <!-- Header -->
+          <header class="flex justify-between items-center mb-10">
+            <h1 class="text-3xl font-bold tracking-wide">📚 IBMbuku</h1>
+            <div class="flex gap-2 items-center">
+              <input id="searchInput" type="text" placeholder="Rechercher un livre..."
+                class="bg-gray-700 px-3 py-2 rounded-lg outline-none text-white" />
+              <button onclick="searchBooks()" class="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg">🔍</button>
+            </div>
+          </header>
+        
+         <!-- Toggle Favorites -->
+          <div class="mb-6">
+            <button onclick="toggleFavorites()" class="bg-yellow-500 hover:bg-yellow-600 px-4 py-2 rounded-lg">
+              ⭐ Voir les favoris
+            </button>
+          </div>
+          <!-- Texte d'acceuil -->
+       <section class="mb-10">
+            <h2 class="text-4xl font-semibold mb-3">Bienvenue dans votre bibliothèque numérique</h2>
+            <p class="text-gray-300 max-w-xl">Explorez des milliers livres, améliorez vos compétences en plongeant dans un univers de connaissances et sauvegardez vos favoris.</p>
+       </section>
+
+            <!-- Grid -->
+        <section id="bookGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"></section>
+
+          <script>
+    const books = [
+      { id: 1, title: "Les métiers de l'internet", author: "Robert C. Martin" },
+      { id: 2, title: "The Pragmatic Programmer", author: "Andrew Hunt" },
+      { id: 3, title: "Atomic Habits", author: "James Clear" },
+      { id: 4, title: "Deep Work", author: "Cal Newport" },
+      { id: 1, title: "Clean Code", author: "Robert C. Martin" },
+      { id: 2, title: "The Pragmatic Programmer", author: "Andrew Hunt" },
+      { id: 3, title: "Atomic Habits", author: "James Clear" },
+      { id: 4, title: "Deep Work", author: "Cal Newport" },
+      { id: 1, title: "Clean Code", author: "Robert C. Martin" },
+      { id: 2, title: "The Pragmatic Programmer", author: "Andrew Hunt" },
+      { id: 3, title: "Atomic Habits", author: "James Clear" },
+      { id: 4, title: "Deep Work", author: "Cal Newport" }
+    ];
+
+    let showFavoritesOnly = false;
+
+    function getFavorites() {
+      return JSON.parse(localStorage.getItem("favorites")) || [];
+    }
+
+    function saveFavorites(favs) {
+      localStorage.setItem("favorites", JSON.stringify(favs));
+    }
+
+    function toggleFavorite(bookId) {
+      let favs = getFavorites();
+      if (favs.includes(bookId)) {
+        favs = favs.filter(id => id !== bookId);
+      } else {
+        favs.push(bookId);
+      }
+      saveFavorites(favs);
+      displayBooks(currentList);
+    }
+
+    let currentList = books;
+
+    function displayBooks(bookList) {
+      currentList = bookList;
+      const grid = document.getElementById("bookGrid");
+      const favs = getFavorites();
+
+      grid.innerHTML = "";
+
+      let list = bookList;
+      if (showFavoritesOnly) {
+        list = bookList.filter(book => favs.includes(book.id));
+      }
+
+      list.forEach(book => {
+        const isFav = favs.includes(book.id);
+
+        const card = document.createElement("div");
+        card.className = "bg-gray-800 rounded-2xl shadow-lg p-4 hover:scale-105 transition-transform";
+
+        card.innerHTML = `
+          <div class="h-40 bg-gray-700 rounded-xl mb-4 flex items-center justify-center text-gray-400">Cover</div>
+          <h3 class="text-lg font-semibold">${book.title}</h3>
+          <p class="text-gray-400 text-sm">${book.author}</p>
+
+          <div class="flex gap-2 mt-4">
+            <button class="w-full bg-blue-600 hover:bg-blue-700 py-2 rounded-lg">Lire</button>
+            <button onclick="toggleFavorite(${book.id})"
+              class="px-3 py-2 rounded-lg ${isFav ? 'bg-yellow-400' : 'bg-gray-600'}">
+              ⭐
+            </button>
+          </div>
+        `;
+
+        grid.appendChild(card);
+      });
+    }
+
+    function searchBooks() {
+      const query = document.getElementById("searchInput").value.toLowerCase();
+      const filtered = books.filter(book =>
+        book.title.toLowerCase().includes(query) ||
+        book.author.toLowerCase().includes(query)
+      );
+      displayBooks(filtered);
+    }
+
+    function toggleFavorites() {
+      showFavoritesOnly = !showFavoritesOnly;
+      displayBooks(currentList);
+    }
+
+    displayBooks(books);
+  </script>
+
+    </body> 
+    <footer>
+        <p1>IBMprod45@gmail.com | IBMprod |+243853193403</p>
+        <p2>copyright &copy;BEBOL2022 par IBMprod</p>
+   </footer>
+</html>

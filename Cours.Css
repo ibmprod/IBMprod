@@ -1,0 +1,66 @@
+/* FOND*/
+body{ font-family: "century gothic", 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ,serif ;
+    background-color: white;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    
+}
+.liberte{
+font-size: 45px;
+color: #2a77dd;
+}
+.cours{
+font-size: 35px;
+color:bleu;
+}
+
+.emoji {
+    position: fixed;
+    right: 0; /* Position à droite */
+    top: 50%;
+    width: 300px;
+}
+
+
+/* TEXTE */
+.Explication{
+    font-size: 25px;
+    color: darkgoldenrod;
+
+
+}
+.Explication a{
+    text-decoration-line: none;
+    color: darkgoldenrod;
+}
+
+
+
+/*COOPYIGHT*/ 
+footer { 
+    font-family:oblique;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    background-color: #333;
+   
+}
+
+/* Styles pour mobile */
+@media (max-width: 768px) {
+    body{
+        flex-direction: column;
+    }
+    .emoji {
+    position: fixed;
+    right: 0; /* Position à droite */
+    top: 50%;
+    width: 100px;
+}
+   
+    footer{
+        width: auto;
+   }
+}
