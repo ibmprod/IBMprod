@@ -1,3 +1,0 @@
-Place the gradle-wrapper.jar file in this directory (gradle/wrapper/gradle-wrapper.jar).
-Generate it locally by running: gradle wrapper --gradle-version 8.7
-or commit the generated wrapper files from your machine.
