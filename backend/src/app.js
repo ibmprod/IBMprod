@@ -11,7 +11,7 @@ app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
 
 // Auth & User routes
 app.use('/api/auth', require('./modules/auth/authRoutes'));
-app.use('/api/users', require('./modules/user/userRoutes.js'));
+app.use('/api/users', require('./modules/user/userRoutes'));
 
 // Backups
 app.use('/api/backups', require('./modules/backups/backupsRoutes'));
@@ -25,17 +25,17 @@ app.use('/api/admin', require('./core/admin/admin.routes'));
 // Health check
 app.get('/api/health', (req, res) => {
   res.status(200).json({ status: 'Server is running' });
-  });
+});
 
 // 404 handler
 app.use((req, res) => {
   res.status(404).json({ error: 'Route not found' });
-  });
+});
 
 // Error handler
 app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).json({ error: 'Internal server error' });
-  });
+});
 
 module.exports = app;
