@@ -3,15 +3,16 @@
 FROM node:18-alpine
 WORKDIR /usr/src/app
 
-# install dependencies
-COPY backend/package.json backend/package-lock.json ./
+# Install dependencies
+COPY package*.json ./
 RUN npm ci --only=production
 
-# copy source
-COPY backend/src ./src
-COPY backend/uploads ./uploads
+# Copy source
+COPY src ./src
+COPY uploads ./uploads
 
-EXPOSE 3000
+EXPOSE 5000
 
 ENV NODE_ENV=production
+ENV PORT=5000
 CMD ["node", "src/server.js"]
