@@ -1,8 +1,8 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const {google} = require('googleapis');
+const { google } = require('googleapis');
 
-const User = require('../models/user.model.js'); //
+const User = require('../user/user.model.js');
 const OAuthToken = require('./oauthTokenModel');
 const { encrypt, decrypt } = require('./cryptoUtil');
 
